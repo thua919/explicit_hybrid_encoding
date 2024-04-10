@@ -1,6 +1,6 @@
 log_dir: './logs'
-decoder: parallel_hash_net # coarsetofine
-dataset: scannet
+decoder: parallel_hash_net
+dataset: replica
 update_pose: False
 
 criteria:
@@ -31,14 +31,13 @@ mapper_specs:
   final_iter: 0
   mesh_res: 8
   overlap_th: 0.8
-    kf_window_size: 10
+  kf_window_size: 8
   kf_selection_method: "multiple_max_set_coverage" # "random” or “multiple_max_set_coverage”
   kf_selection_random_radio: 0.5   # random keyframe ratio
   insert_method: "intersection" # "naive" or "intersection"
-  insert_ratio: 0.55
+  insert_ratio: 0.85
   offset: 10 # used to make make the coordinate of each point positive
-  use_adaptive_iter: True # adaptive iteration
-
+  use_adaptive_ending: True # adaptive iteration
 
 debug_args:
   verbose: false
@@ -46,4 +45,5 @@ debug_args:
   render_freq: -1
   save_ckpt_freq: -1
   render_res: [ 320, 240 ]
+
 
